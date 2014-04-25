@@ -1,0 +1,2 @@
+set encoding iso_8859_1;set xtics  ("9" 1,"100" 2,"200" 3,"300" 4,"400" 5, "500" 6, "600" 7, "700" 8, "800" 9, "900" 10, "1000" 11);  
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Nombre de tâches'; set ylabel 'Temps exécution (s)'; plot './resultHeuristiqueAm.ml' title 'Heuristique proposée' with linespoints,'./resultExactAlgo.ml' title 'Branch and Bound' with linespoints,'./resultHeuristiqueWF.ml' title 'Worst-Fit' with linespoints,'./resultHeuristiqueBF.ml' title 'Best-Fit' with linespoints; 

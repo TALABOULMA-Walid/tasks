@@ -1,0 +1,2 @@
+ocamlc str.cma unix.cma -o fichier_executable fichier_code_ocaml.ml 
+

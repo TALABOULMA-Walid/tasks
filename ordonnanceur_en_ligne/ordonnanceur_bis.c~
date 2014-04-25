@@ -1,0 +1,260 @@
+#define _GNU_SOURCE
+#include <pthread.h>
+#include <signal.h>
+#include <stdio.h>
+#include<stdlib.h>
+#include<time.h>
+#include<unistd.h>
+#include<errno.h>
+#include<sys/time.h>
+
+//Struture de données  et variables globales
+
+const SIZE_T=3; 
+const I_PERM=0;
+const R_MIN=0;
+int i=-1;
+int i_prec=1;
+int j=0;
+
+/* Code de la tâche 1. tache2=(0,3,6,6) avec une unité de temps est égale à 1s*/ 
+void * tache1(){
+//printf ("Début Task1 \n");
+int n=sched_getcpu();
+
+printf ("Début Task1 sur proc%d\n",n);
+int j=0;  
+ while  (j<2000000000){
+ /*if((j>1000000000) & (j>))
+     printf ("j=%d \n",j);*/
+   j++;
+ }
+printf ("Fin Task1 \n");
+return NULL;
+}
+
+/* Code de la tâche 2. tache2=(0,5,12,12) avec une unité de temps est égale à 1s*/ 
+void * tache2(){
+//printf ("Début Task2 \n");
+int n=sched_getcpu();
+printf ("Début Task2 sur proc%d\n",n);
+ int j=0;  
+ while  (j< 1000000000){
+   j++;
+ }
+printf ("Fin Task2 \n");
+return NULL;
+}
+/* Code de la tâche idle*/ 
+void * idle(){
+ int j=1;  
+ while  (j){
+   j++;
+ }
+printf ("idle \n");
+return NULL;
+}
+
+/*Création des taches(thread)*/
+pthread_t Nb_threads[2];
+
+//pthread_t* thrd= &thread1;
+//Structure de données de T
+typedef  struct Element_tab_ordo {
+ int id;
+ int duree;
+ int create_thread; 
+ void *(*code)();
+ pthread_t * tache; //(*code)();
+}ELEMENT_TAB ; 
+
+
+//Element_tab_ordo T[SIZE_T];
+//ELEMENT_TAB T[]={{1,3,1,tache1},{2,5,1,tache2},{1,4,1,tache1}};
+ELEMENT_TAB T[]={{2,1,1,tache2},{1,3,1,tache1},{2,4,0,tache2},{1,3,1,tache1}};
+//ELEMENT_TAB T[]={{2,2,1,tache2},{1,5,1,tache2},{1,3,1,tache1},{-1,1,-1,idle}};
+
+// timer logiciel et signal( interruption logicielle)
+timer_t timer_o; 
+struct sigevent event_o; 
+struct itimerspec spec_o; 
+
+
+/*Code de l'ordonnanceur*/
+void ordonnanceur()
+ {
+ //printf ("Test ordo 1  \n");
+ if(i==(SIZE_T-1)){
+  i_prec=i;
+  i=I_PERM;
+  }
+ else {
+ i_prec=i;
+ i++;
+}
+/*
+if(T[i].id==-1)
+j=0;
+else*/
+
+j=1;
+
+printf("i=%d j=%d \n",i,j);
+
+/*On modifie la durée d'expiration du timer timer_o puis on leré-arme*/
+ spec_o.it_value.tv_sec=T[i].duree;
+
+if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
+  perror("timer_settime");
+  exit(EXIT_FAILURE);
+}
+/*
+if((i!=0)&&(T[i_prec].create_thread==1)){
+ int arr=pthread_kill(Nb_threads[(T[i_prec].id-1)],SIGSTOP);
+}
+else
+if(T[i].create_thread==1){
+*/
+
+
+
+/*
+else
+{
+struct sigevent event_t;
+event_t.sigev_signo=SIGRTMIN+2;
+signal(SIGRTMIN+2,Nb_threads[(T[i].id-1)];
+
+ int arr=pthread_kill(Nb_threads[(T[i_prec].id-1)],SIGSTOP);
+ int cont=pthread_kill(Nb_threads[(T[i].id-1)],SIGCONT);
+}
+}*/
+
+//if((i!=0)&&(T[i].id==-1))
+//int arr = thr_suspend( Nb_threads+(T[i_prec].id-1));
+//int cont=thr_continue(Nb_threads+(T[i].id-1));
+/*
+if((Nb_threads[(T[i_prec].id-1)])&&(i!=0)){
+struct sched_param parametres;
+parametres.sched_priority=1;
+
+if((err=pthread_attr_setschedparam(&attributs,&parametres))!=0){
+fprintf(stderr, " erreurs priorité \n");
+ exit(EXIT_FAILURE);
+}
+
+}*/
+struct sched_param param;
+int priority;
+int policy;
+int ret;
+ret = pthread_getschedparam (Nb_threads[(T[i].id-1)], &policy, &param);
+
+priority = param.sched_priority;
+  printf ("Priority tache %d=%d\n",T[i].id,policy);
+}
+
+/*Fonction main*/
+int main (void){
+cpu_set_t cpuset2;
+CPU_ZERO(&cpuset2);
+CPU_SET(2, &cpuset2);
+
+
+if((sched_setaffinity(2,sizeof(cpu_set_t),&cpuset2)!=0))
+   printf ("Erreur affinity main \n");
+
+
+/*Table d'ordonnancement T qui contient le résultat de l'ordonnancement en non préemptif de tache1 et tache2*/
+/* Fonction ordonnanceur  qui est appelé à chaque expiration du timer timer_o*/
+
+spec_o.it_value.tv_sec=0;
+spec_o.it_value.tv_nsec=1;
+spec_o.it_interval.tv_sec=0;
+spec_o.it_interval.tv_nsec=0;
+
+// Installer la routine du signal
+signal(SIGRTMIN+1,ordonnanceur);
+event_o.sigev_notify=SIGEV_SIGNAL;
+event_o.sigev_signo=SIGRTMIN+1;
+
+if(timer_create(CLOCK_REALTIME,&event_o,&timer_o)!=0){
+  perror("timer_create");
+  exit(EXIT_FAILURE);
+  }
+
+/* */ 
+
+
+//Armer le timer timer_o
+if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
+  perror("timer_settime");
+  exit(EXIT_FAILURE);
+}
+
+while (1){
+
+if(j==1){
+//int ret = sched_yield();
+if(T[i].create_thread==1){
+
+int err;
+cpu_set_t cpuset;
+CPU_ZERO(&cpuset);
+CPU_SET(2,(&cpuset));
+
+pthread_attr_t attributs;
+struct sched_param param;
+pthread_attr_init(&attributs);
+if( pthread_attr_setaffinity_np(&attributs,sizeof(cpu_set_t),&cpuset)!=0)
+  printf ("erreur affinité \n");
+	
+
+if((err=pthread_attr_setschedpolicy(&attributs,SCHED_FIFO))!=0){
+fprintf(stderr, "Modification de l'algo d'ordonnancement a echoué \n");
+ exit(EXIT_FAILURE);
+}
+
+if((err=pthread_attr_setinheritsched(&attributs,PTHREAD_EXPLICIT_SCHED))!=0){
+fprintf(stderr, " erreur héritage algo d'ordo 2\n");
+ exit(EXIT_FAILURE);
+}
+
+//struct sched_param param;
+param.sched_priority=50+i;
+
+if((err=pthread_attr_setschedparam(&attributs,&param))!=0){
+fprintf(stderr, " erreurs priorité \n");
+ exit(EXIT_FAILURE);
+}
+
+ if(pthread_create((Nb_threads+(T[i].id-1)),&attributs,(*T[i].code),NULL)!=0)
+  printf ("erreur creation thread 1\n");
+
+///*
+//struct sched_param param;
+
+
+ // pthread_join (Nb_threads[(T[i].id-1)], NULL);
+
+
+}
+
+}
+
+/*
+do {
+pid = fork();
+} while ((pid == -1) && (errno == EAGAIN));
+printf ("pid=%d \n",pid);
+(*T[i].code)();
+
+j=0;
+}
+*/
+
+pause();
+}
+
+return EXIT_SUCCESS;
+}

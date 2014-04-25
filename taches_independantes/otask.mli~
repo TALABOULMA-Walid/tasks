@@ -1,0 +1,14 @@
+type otask =
+{istartTime :  int ;
+itrans : int;
+perm  :int;
+schedule : int array ;
+}
+
+type task =
+{id : int ;
+ mutable firstActivation :int;
+ wcet : int;
+ period: int;
+ deadline: int;
+}

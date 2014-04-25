@@ -1,0 +1,15 @@
+type TasksSet =
+{listTasks : list Task;
+ load : float;
+ ppcm : float;
+ schedulable : bool; 
+}
+and Task =
+{id : int ;
+ firstActivation :int;
+ wcet : int;
+ period: int;
+ deadline: int;
+ pred : list int;
+ succ : list int;
+}

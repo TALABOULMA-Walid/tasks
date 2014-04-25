@@ -1,0 +1,9 @@
+
+set term jpeg;set output "SuccessRatioFixedProc.jpeg";set xlabel 'Different period'; set ylabel 'Sucess Ratio'; plot './resultExacAlgoSuccessRatio.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristqueAmSuccessAm.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFSucessRatio.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFSucessRatio.ml' title 'Best-Fit heuristic' with linespoints;set logscale y 10;
+************************************************
+set term jpeg;set output "SuccessRatioFixedProc.jpeg";set xlabel 'Different period'; set ylabel 'Sucess Ratio'; plot './resultExacAlgoSuccessRatio.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristqueAmSuccessAm.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFSucessRatio.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFSucessRatio.ml' title 'Best-Fit heuristic' with linespoints;
+
+
+
+
+

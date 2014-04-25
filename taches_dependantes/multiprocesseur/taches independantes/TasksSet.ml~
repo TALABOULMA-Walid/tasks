@@ -1,0 +1,4 @@
+value searchTask tasksSet i =
+ let i=0 in
+ while (i<= tasksSet->listTasks.length)
+ if (listTasks

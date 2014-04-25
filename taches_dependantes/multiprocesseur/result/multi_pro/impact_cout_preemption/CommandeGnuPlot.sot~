@@ -1,0 +1,7 @@
+set encoding iso_8859_1;set term jpeg;set yrange [0:1.2];set output "With_and_without_preemption.jpeg";set xlabel "Facteur d'utilisation des ensembles de t\342ches"; set ylabel "Taux de succ\350s"; plot './oplus_without_preemption_cost.ml' title "Sans co\373t de pr\351emption" with linespoints,'./oplus_with_preemption_cost.ml' title "Avec co\373t de pr\351emption" with linespoints;
+
+
+
+set yrange [0:250]
+set encoding iso_8859_1;
+set xtics  ("8" 0,"9" 1,"10" 2,"20" 3,"30" 4,"40" 5,"50" 6,"60" 7,"70" 8,"80" 9,"90" 10,"100" 11);   set term jpeg; set output "CpuTimeFixedNbTasks.jpeg"; set xlabel "Nombre de t\342ches"; set ylabel "Temps d\264ex\351cution (s)"; plot './duree_heur_multi_with_10_34_task_sets_3_procs_exemp.ml' title "Heuristique propos\351e" with linespoints,'./duree_exact_algo_with_3_procs.ml' title "Branch and Bound" with linespoints; 

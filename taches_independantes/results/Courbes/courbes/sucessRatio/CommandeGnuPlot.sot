@@ -1,0 +1,3 @@
+
+set term jpeg;set output "Succes Ratio.jpeg";set xlabel 'Number of processors'; set ylabel 'Success Ratio '; plot './resultHeuristqueAmSuccessAm.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristqueSuccessBF.ml' title 'Best-Fit heuristic' with linespoints;
+

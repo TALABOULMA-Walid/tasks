@@ -1,0 +1,10 @@
+Open Taskalg;
+{listprocessor : list int;
+ 
+}
+and Processor =
+{id : int;
+ listTask: list int;
+ stask :Taskalg.stask;
+ responseTime : int;  
+}

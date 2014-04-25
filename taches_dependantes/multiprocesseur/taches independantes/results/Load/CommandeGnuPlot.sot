@@ -1,0 +1,7 @@
+set term jpeg;set output "LoadFixedNbProcessors.jpeg";set xlabel 'Load of task set'; set ylabel 'Average of (1-Load) on processors used'; plot './resultHeuristqueAmLoad.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFLoad.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFLoad.ml' title 'Best-Fit heuristic' with linespoints;
+
+
+set term jpeg;set output "LoadFixedNbProcessors.jpeg";set xlabel 'Load of task set'; set ylabel 'Average of (1-Load) on processors used'; plot './resultHeuristqueAmLoad.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFLoad.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFLoad.ml' title 'Best-Fit heuristic' with linespoints;
+
+
+

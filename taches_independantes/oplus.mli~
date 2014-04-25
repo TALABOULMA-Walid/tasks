@@ -1,0 +1,8 @@
+value compute_start_time : Otask.otask -> Task.task -> int;
+value compute_trans_part : otask -> task -> int; 
+value compute_perm_part :  otask -> task -> int; 
+value buildo_task : task-> otask; 
+value oplus : otask -> task-> otask;
+value gcd : int -> int -> int;
+value lcm : int -> int -> int;
+value print_otask  : otask ;

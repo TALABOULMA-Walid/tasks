@@ -1,0 +1,6 @@
+set term jpeg;set output "CpuTime.jpeg";set xlabel '(Number of task,number of processors)'; set ylabel 'Execution time of the heuristics'; plot './resultHeuristiqueAmCPU.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFCPUTime.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFCPUTime.ml' title 'Best-Fit heuristic' with linespoints;
+Terminal type set to 'jpeg'
+
+set xtics  ("(100,5)" 1,"(200,6)" 2,"(300,7)" 3,"(400,8)" 4, "(500,9)" 5, "(600,10)" 6, "(700,11)" 7, "(800,12)" 8, "(900,13)" 9, "(1000,14)" 10); 
+
+set xtics  ("100/5" 1,"400/8" 4, "700/11" 7,"1000/14" 10); 

@@ -1,0 +1,8 @@
+set term jpeg;set output "CpuTime.jpeg";set xlabel 'Load of task systems'; set ylabel 'Response time of the task sytems (time units)'; plot './resultHeuristiqueAmCPU.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFCPUTime.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFCPUTime.ml' title 'Best-Fit heuristic' with linespoints;
+Terminal type set to 'jpeg'
+
+
+
+set term jpeg;set output "CpuTime.jpeg";set xlabel 'Load of the task systems'; set ylabel 'Response time of the task systems (time units)'; plot './resultHeuristiqueAmCPU.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueWFCPUTime.ml' title 'Worst-Fit heuristic' with linespoints,'./resultHeuristiqueBFCPUTime.ml' title 'Best-Fit heuristic' with linespoints;
+
+

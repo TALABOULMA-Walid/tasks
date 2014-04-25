@@ -1,0 +1,9 @@
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Number of tasks'; set ylabel 'Time CPU (ms)'; plot './resultExactAlgo.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristique.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueBF.ml' title 'Best-Fit heuristic' with linespoints;set logscale y 10; 
+
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Load of tasks; set ylabel 'Total execution of the set of task (unit of time)'; plot './resultHeuristiqueAmCPU.ml' title 'prposed heuristic' with linespoints,'./resultHeuristiqueBFCPUTime.ml' title 'Best-Fit heuristic' with linespoints;set logscale y 10; 
+
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Load of tasks'; set ylabel 'Total execution of the tasks (time units)';
+ 
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Load of tasks'; set ylabel 'Total execution time of tasks (time units)'; plot './resultHeuristiqueAmCPU.ml' title 'proposed heuristic' with linespoints,'./resultHeuristiqueBFCPUTime.ml' title 'Best-Fit heuristic' with linespoints;
+
+

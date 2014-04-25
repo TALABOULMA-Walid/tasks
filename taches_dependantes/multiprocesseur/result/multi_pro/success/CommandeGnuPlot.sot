@@ -1,0 +1,2 @@
+set term jpeg;set yrange [0:1.2];set output "Algorithme exact_heuristique_success.jpeg";set xlabel 'Load'; set ylabel 'Sucess Ratio'; plot './succesratio_heur_multi_pro.ml' title 'Heuristique' with linespoints,'./success_ratio_exact_algo_multi_pro.ml' title 'Algo Exact' with linespoints;
+

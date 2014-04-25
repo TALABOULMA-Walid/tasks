@@ -1,0 +1,1 @@
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Number of tasks'; set ylabel 'Time CPU (ms)'; plot './resultExactAlgo.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristique.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueBF.ml' title 'Best-Fit heuristic' with linespoints;set logscale y 10; 

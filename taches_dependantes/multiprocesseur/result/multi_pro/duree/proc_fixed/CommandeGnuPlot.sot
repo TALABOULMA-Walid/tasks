@@ -1,0 +1,14 @@
+set xtics  ("9" 1,"100" 2,"200" 3,"300" 4,"400" 5, "500" 6, "600" 7, "700" 8, "800" 9, "900" 10, "1000" 11);  
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Number of tasks'; set ylabel 'Time CPU (s)'; plot './resultExactAlgo.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristiqueAm.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueBF.ml' title 'Best-Fit heuristic' with linespoints; 
+
+
+set yrange [0:150]
+set xtics  ("8" 0,"10" 1,"50" 2,"60" 3,"70" 4,"80" 5);  
+
+set encoding iso_8859_1; set term jpeg; set output "CpuTimeFixedNbTasks.jpeg"; set xlabel "Nombre de t\342ches"; set ylabel "Temps d\264ex\351cution (s)"; plot './duree_heur_multi_with_3_procs.ml' title "Heuristique propos\351e" with linespoints,'./duree_exact_algo_with_3_procs.ml' title "Branch and Bound" with linespoints; 
+
+set logscale y 10;
+
+
+
+set encoding iso_8859_1; set term jpeg;set output "CpuTime.jpeg"; set xlabel "Facteur d\264utilisation des ensembles de t\342ches"; set ylabel "Temps de r\351ponse de l\264ensemble des t\342ches"; plot './resultHeuristiqueAmCPU.ml' title "Heuristique propos\351e" with linespoints,'./resultHeuristiqueWFCPUTime.ml' title "Worst-Fit" with linespoints,'./resultHeuristiqueBFCPUTime.ml' title "Best-Fit" with linespoints;

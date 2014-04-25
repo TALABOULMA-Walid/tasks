@@ -1,0 +1,17 @@
+set xtics  ("9" 1,"100" 2,"200" 3,"300" 4,"400" 5, "500" 6, "600" 7, "700" 8, "800" 9, "900" 10, "1000" 11);  
+set term jpeg;set output "CpuTimeFixedNbProcessors.jpeg";set xlabel 'Number of tasks'; set ylabel 'Time CPU (s)'; plot './resultExactAlgo.ml' title 'Exact Algorithm' with linespoints,'./resultHeuristiqueAm.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueBF.ml' title 'Best-Fit heuristic' with linespoints; 
+
+
+set yrange [0:250]
+set encoding iso_8859_1;
+set xtics  ("2" 0,"3" 1,"4" 2,"5" 3,"6" 4,"7" 5,"8" 6,"9" 7,"10" 8,"11" 9,"12" 10,"13" 11,"14" 12,"15" 13);  
+set term jpeg;set output "CpuTimeFixedNbProc.jpeg";set xlabel 'Nombre de processeurs'; set ylabel  "Temps d\264ex\351cution (s)"; plot './duree_heur_multi_with_100_tasks_3_15.ml' title "Heuristique propos\351e" with linespoints,'./duree_exact_algo_with_10_task.ml' title "Branch and Bound" with linespoints; 
+
+
+
+
+
+
+
+set logscale y 10;
+

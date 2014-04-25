@@ -1,0 +1,10 @@
+tâche 0 18 
+tâche 1 20 
+tâche 2 24 
+tâche 3 25 
+tâche 4 32 
+tâche 5 33 
+tâche 6 35 
+tâche 7 35 
+tâche 8 42 
+tâche 9 53 

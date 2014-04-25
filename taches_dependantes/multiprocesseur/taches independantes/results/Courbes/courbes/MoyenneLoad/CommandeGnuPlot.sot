@@ -1,0 +1,2 @@
+ set xtics  ("6" 1,"7" 2,"8" 3,"9" 4,"10" 5, "11" 6, "12" 7, "13" 8, "14" 9, "15" 10, "16" 11,"17" 12,"19" 13,"20" 14); 
+set term jpeg;set output "MoyenneLoad.jpeg";set xlabel 'Number of processors'; set ylabel 'Average Load '; plot './resultHeuristiqueAmMoyenneLoad.ml' title 'Proposed heuristic' with linespoints,'./resultHeuristiqueBMoyenneLoad.ml' title 'Worst-Fit heuristic' with linespoints;set logscale y 10;
