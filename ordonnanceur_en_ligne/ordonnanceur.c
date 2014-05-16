@@ -93,7 +93,7 @@ return NULL;
 
 // table d'ordonnancement
 //ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,3,0,tache2},{3,1,1,tache3},{1,2,1,tache1},{3,2,0,tache3},{2,2,1,tache2}};
-ELEMENT_TAB T[SIZE_T]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,vide}};
+ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,vide}};
 // timer logiciel et signal( interruption logicielle)
 timer_t timer_o; 
 struct sigevent event_o; 
