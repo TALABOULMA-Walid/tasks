@@ -9,6 +9,8 @@
 #include<errno.h>
 #include<sys/time.h>
 
+
+int Hyperperiode = 2;
 //Struture de données  et variables globales
 //Structure de données de T
 typedef  struct Element_tab_ordo {
@@ -33,7 +35,7 @@ pthread_t Nb_threads[4];
 /* Code de la tâche 1. tache2=(2,2,6,6) avec une unité de temps est égale à 1s*/ 
 void * tache1(){
 //int n=sched_getcpu();
-printf ("[%f]  Début Task1 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
+printf ("[%f]  Début Task1 sur proc%d\n",((clock()/(double)CLOCKS_PER_SEC))-2,1);
 int j=0;  
  while  (j<1000900000){
    j++;
@@ -45,7 +47,7 @@ return NULL;
 /* Code de la tâche 2. tache2=(0,4,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache2(){
 //int n=sched_getcpu();
-printf ("[%f]  Début Task2 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
+printf ("[%f]  Début Task2 sur proc%d\n",((clock()/(double)CLOCKS_PER_SEC))-2,1);
  int j=0;  
  while  (j< 2000900000){
    j++;
@@ -57,7 +59,7 @@ return NULL;
 /* Code de la tâche 3. tache3=(2,2,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache3(){
 //int n=sched_getcpu();
-printf ("[%f]  Début Task3 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
+printf ("[%f]  Début Task3 sur proc%d\n",((clock()/(double)CLOCKS_PER_SEC))-2,1);
  int j=0;   
  while  (j< 1000900000){
    j++;
@@ -74,7 +76,7 @@ printf ("Début temps libre sur proc%d\n",1);
  while  (j< 1000900000){
    j++;
  }
-printf ("fin temps libre \n");
+printf ("fin temps libre \n hyperperiode : %d \n", Hyperperiode++);
 return NULL;
 }
 /********************************************************************************/
@@ -118,7 +120,7 @@ int n=sched_getcpu();
 }
 
 /*On modifie la durée d'expiration du timer timer_o puis on leré-arme*/
- spec_o.it_value.tv_sec=T[i].duree;
+ //spec_o.it_value.tv_sec=T[i].duree;
 
 if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
   perror("timer_settime");
@@ -206,7 +208,7 @@ if(sched_setscheduler(0,SCHED_FIFO,&param)!=0)
    printf ("Erreur setchedluer main \n");
 
 /*Initialisation de la durée du timer*/
-spec_o.it_value.tv_sec=0;
+spec_o.it_value.tv_sec=2;
 spec_o.it_value.tv_nsec=1;
 spec_o.it_interval.tv_sec=0;
 spec_o.it_interval.tv_nsec=0;
