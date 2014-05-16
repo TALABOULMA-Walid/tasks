@@ -10,23 +10,30 @@
 #include<sys/time.h>
 
 //Struture de données  et variables globales
+//Structure de données de T
+typedef  struct Element_tab_ordo {
+ int id;
+ int duree;
+ int create_thread; 
+ void *(*code)();
+// pthread_t * tache; //(*code)();
+}ELEMENT_TAB ;
 
-const SIZE_T=7; 
-const I_PERM=1;
+const SIZE_T=6; 
+const I_PERM=1; //ERR
 const R_MIN=0;
-//const NB_TASKS=3;
+
 int i=-1;
 int i_prec=0;
 int j=0;
+
 /*Création des taches(thread)*/
-pthread_t Nb_threads[3];
+pthread_t Nb_threads[4]; 
 
 /* Code de la tâche 1. tache2=(2,2,6,6) avec une unité de temps est égale à 1s*/ 
 void * tache1(){
-//nice(-20);
-int n=sched_getcpu();
-
-printf ("[%f]  Début Task1 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),(n+1));
+//int n=sched_getcpu();
+printf ("[%f]  Début Task1 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
 int j=0;  
  while  (j<200900000){
    j++;
@@ -35,26 +42,25 @@ printf ("[%f]  Fin Task1 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
 
-/* Code de la tâche 2. tache2=(0,3,12,12) avec une unité de temps est égale à 1s*/ 
+/* Code de la tâche 2. tache2=(0,4,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache2(){
-int n=sched_getcpu();
-printf ("[%f]  Début Task2 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),(n+1));
+//int n=sched_getcpu();
+printf ("[%f]  Début Task2 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
  int j=0;  
  while  (j< 400900000){
    j++;
  }
-/*
-j=0; 
- while  (j< 200000000){
-   j++;
- }*/
 printf ("[%f]  Fin Task2 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
+
+
+
+
 /* Code de la tâche 3. tache3=(2,2,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache3(){
-int n=sched_getcpu();
-printf ("[%f]  Début Task3 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),(n+1));
+//int n=sched_getcpu();
+printf ("[%f]  Début Task3 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
  int j=0;   
  while  (j< 200900000){
    j++;
@@ -64,35 +70,22 @@ printf ("[%f]  Fin Task3 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
 
+
+
 /* Code de la tâche idle*/ 
 void * idle(){
-int n=sched_getcpu();
-//printf ("Début idle sur proc%d\n",(n+1));
- while  (1){
+printf ("Début idle sur proc%d\n",1);
+  int j=0;   
+ while  (j< 200900000){
+   j++;
  }
-//printf ("idle \n");
+printf ("fin idle \n");
 return NULL;
 }
 
-
-
-//pthread_t* thrd= &thread1;
-//Structure de données de T
-typedef  struct Element_tab_ordo {
- int id;
- int duree;
- int create_thread; 
- void *(*code)();
-// pthread_t * tache; //(*code)();
-}ELEMENT_TAB ; 
-
-/*Table d'ordonnancement T qui contient le résultat de l'ordonnancement en non préemptif de tache1 et tache2*/
-
-//Element_tab_ordo T[SIZE_T];
-
-//ELEMENT_TAB T[]={{2,1,1,tache2},{1,3,1,tache1},{2,4,0,tache2},{1,3,1,tache1}};
-ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,3,0,tache2},{3,1,1,tache3},{1,2,1,tache1},{3,2,0,tache3},{2,2,1,tache2}};
-
+// table d'ordonnancement
+//ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,3,0,tache2},{3,1,1,tache3},{1,2,1,tache1},{3,2,0,tache3},{2,2,1,tache2}};
+ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,idle}};
 // timer logiciel et signal( interruption logicielle)
 timer_t timer_o; 
 struct sigevent event_o; 
@@ -106,7 +99,7 @@ struct itimerspec spec_o;
 void ordonnanceur()
  {
 int n=sched_getcpu();
- //printf ("Test ordo 1  \n");
+ 
  if(i==(SIZE_T-1)){
   i_prec=i;
   i=I_PERM;
@@ -115,16 +108,6 @@ int n=sched_getcpu();
  i_prec=i;
  i++;
 }
-/*
-if(T[i].id==-1)
-j=0;
-else*/
-//j=1;
-//fprintf (stdout,"[%f] Fin Task1 \n",(clock()/(double)CLOCKS_PER_SEC));
-
-
-//printf ("[%f] i=%d, début ordo sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),i,(n+1));
-//printf("i=%d  \n",i);
 
 /*On modifie la durée d'expiration du timer timer_o puis on leré-arme*/
  spec_o.it_value.tv_sec=T[i].duree;
@@ -149,11 +132,6 @@ if((i_prec!=(-1))&&(i!=(-1))&&(Nb_threads[(T[i_prec].id-1)]) ){
   //printf ("test i=%d i_prec=%d \n",i,i_prec);
 param.sched_priority = min_priority ;
 int ret=pthread_setschedparam(Nb_threads[(T[i_prec].id-1)],SCHED_FIFO, &param);
-
-/*
-if(pthread_setschedparam(Nb_threads[(T[i_prec].id-1)],SCHED_FIFO, &param)!=0)
-//printf ("erreur modif priorité à min_priorité 45 \n");;
-*/
 
 }
 if(T[i].create_thread==1){
@@ -193,7 +171,7 @@ if((Nb_threads[(T[i].id-1)])){
 param.sched_priority = 98 ;
 ret = pthread_setschedparam(Nb_threads[(T[i].id-1)],SCHED_FIFO,&param);
 }
-//printf ("[%f] i=%d, fin ordo sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),i,(n+1));
+
 }
 
 
@@ -201,7 +179,6 @@ ret = pthread_setschedparam(Nb_threads[(T[i].id-1)],SCHED_FIFO,&param);
 /****************/
 /*Fonction main*/
 int main (void){
-//printf ("[%f]  Date zero \n",(clock()/(double)CLOCKS_PER_SEC));
 int err;
 cpu_set_t cpuset;
 CPU_ZERO(&cpuset);
@@ -279,12 +256,16 @@ if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
   perror("timer_settime");
   exit(EXIT_FAILURE);
 }
-while (1){
 
-/*On vérifie s'il s'agit d'une activation ou d'une reprise d'exécution. Si c'est une activation alors on crée une nouvelle instance du thread puis on lui donne la plus grande priorité. Sinon on lui donne la plus grande priorité*/
- //printf (test \n");
 
-/* En attente de signal*/
+
+int compteur=0;
+
+while (compteur < 20){
+
+compteur++;
+
+/*En attente de signal*/
 
 pause();
 }
