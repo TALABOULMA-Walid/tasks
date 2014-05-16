@@ -20,7 +20,7 @@ typedef  struct Element_tab_ordo {
 }ELEMENT_TAB ;
 
 const SIZE_T=6; 
-const I_PERM=1; //ERR
+const I_PERM=0; 
 const R_MIN=0;
 
 int i=-1;
@@ -41,7 +41,7 @@ int j=0;
 printf ("[%f]  Fin Task1 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
-
+/****************************************************************************/
 /* Code de la tâche 2. tache2=(0,4,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache2(){
 //int n=sched_getcpu();
@@ -53,10 +53,7 @@ printf ("[%f]  Début Task2 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
 printf ("[%f]  Fin Task2 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
-
-
-
-
+/*****************************************************************************/
 /* Code de la tâche 3. tache3=(2,2,12,12) avec une unité de temps est égale à 1s*/ 
 void * tache3(){
 //int n=sched_getcpu();
@@ -69,9 +66,7 @@ printf ("[%f]  Début Task3 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
 printf ("[%f]  Fin Task3 \n",(clock()/(double)CLOCKS_PER_SEC));
 return NULL;
 }
-
-
-
+/******************************************************************************/
 /* Code de la tâche idle*/ 
 void * idle(){
 printf ("Début idle sur proc%d\n",1);
@@ -82,10 +77,10 @@ printf ("Début idle sur proc%d\n",1);
 printf ("fin idle \n");
 return NULL;
 }
-
+/********************************************************************************/
 // table d'ordonnancement
 //ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,3,0,tache2},{3,1,1,tache3},{1,2,1,tache1},{3,2,0,tache3},{2,2,1,tache2}};
-ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,idle}};
+ELEMENT_TAB T[SIZE_T]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,idle}};
 // timer logiciel et signal( interruption logicielle)
 timer_t timer_o; 
 struct sigevent event_o; 
@@ -119,7 +114,6 @@ if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
 int ret;
 struct sched_param param;
 int min_priority = sched_get_priority_min(SCHED_FIFO);
-//int max_priority = sched_get_priority_max(SCHED_FIFO);
 
 cpu_set_t cpuset;
 CPU_ZERO(&cpuset);
@@ -129,45 +123,47 @@ pthread_attr_t attributs;
 
 /*Pour duminuer la priorité du thread qu'on arrete, pour qu'il reprend pas son exécution à une date qu'on ne veut. Sa priorité devient plus petite que la priorité de la tâche idle*/
 if((i_prec!=(-1))&&(i!=(-1))&&(Nb_threads[(T[i_prec].id-1)]) ){
-  //printf ("test i=%d i_prec=%d \n",i,i_prec);
-param.sched_priority = min_priority ;
-int ret=pthread_setschedparam(Nb_threads[(T[i_prec].id-1)],SCHED_FIFO, &param);
-
+	param.sched_priority = min_priority ;
+	int ret=pthread_setschedparam(Nb_threads[(T[i_prec].id-1)],SCHED_FIFO, &param);
 }
+
 if(T[i].create_thread==1){
 
-pthread_attr_init(&attributs);
-/*affinité du thread crée*/
-if(pthread_attr_setaffinity_np(&attributs,sizeof(cpu_set_t),&cpuset)!=0)
-  printf ("erreur affinité \n");
+		pthread_attr_init(&attributs);
+		/*affinité du thread crée*/
+		if(pthread_attr_setaffinity_np(&attributs,sizeof(cpu_set_t),&cpuset)!=0)
+  			printf ("erreur affinité \n");
 
-/*Algo d'ordonnancement FIFO avec priorité*/
-if(pthread_attr_setschedpolicy(&attributs,SCHED_FIFO)!=0){
-fprintf(stderr, "Modification de l'algo d'ordonnancement a echoué \n");
- exit(EXIT_FAILURE);
-}
-/*Pour ne pas hériter d'un autre algo d'ordonnancement*/
-if(pthread_attr_setinheritsched(&attributs,PTHREAD_EXPLICIT_SCHED)!=0){
-fprintf(stderr, " Erreur héritage algo d'ordo 2\n");
- exit(EXIT_FAILURE);
-}
+		/*Algo d'ordonnancement FIFO avec priorité*/
+		if(pthread_attr_setschedpolicy(&attributs,SCHED_FIFO)!=0){
+			fprintf(stderr, "Modification de l'algo d'ordonnancement a echoué \n");
+			 exit(EXIT_FAILURE);
+		}
 
-//struct sched_param param pour donner une priorité au thread;
-//int max_priority = sched_get_priority_max(SCHED_FIFO);
-param.sched_priority=98;
-if(pthread_attr_setschedparam(&attributs,&param)!=0){
- fprintf(stderr, " erreurs priorité \n");
- exit(EXIT_FAILURE);
-}
-/*Création du thread avec les paramètres in */
-if(pthread_create((Nb_threads+(T[i].id-1)),&attributs,(*T[i].code),NULL)!=0){
-  printf ("Erreur creation thread %d\n",T[i].id);
-  exit(EXIT_FAILURE);
- }
+		/*Pour ne pas hériter d'un autre algo d'ordonnancement*/
+		if(pthread_attr_setinheritsched(&attributs,PTHREAD_EXPLICIT_SCHED)!=0){
+			fprintf(stderr, " Erreur héritage algo d'ordo 2\n");
+ 			exit(EXIT_FAILURE);
+		}
+
+		//struct sched_param param pour donner une priorité au thread;
+		//int max_priority = sched_get_priority_max(SCHED_FIFO);
+		param.sched_priority=98;
+		if(pthread_attr_setschedparam(&attributs,&param)!=0){
+ 			fprintf(stderr, " erreurs priorité \n");
+ 			exit(EXIT_FAILURE);
+		}
+
+		/*Création du thread avec les paramètres in */
+		if(pthread_create((Nb_threads+(T[i].id-1)),&attributs,(*T[i].code),NULL)!=0){
+  		printf ("Erreur creation thread %d\n",T[i].id);
+  		exit(EXIT_FAILURE);
+ 		}
 }
 /*Reprise d'exécution d'un thread. Dans ce cas on redonne au thread Nb_threads[(T[i].id-1)], la plus grande priorité */
 else
 if((Nb_threads[(T[i].id-1)])){
+printf ("[%f]  reprise Task%d \n",(clock()/(double)CLOCKS_PER_SEC),T[i].id);
 param.sched_priority = 98 ;
 ret = pthread_setschedparam(Nb_threads[(T[i].id-1)],SCHED_FIFO,&param);
 }
