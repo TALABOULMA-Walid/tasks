@@ -68,19 +68,32 @@ return NULL;
 }
 /******************************************************************************/
 /* Code de la tâche idle*/ 
-void * idle(){
-printf ("Début idle sur proc%d\n",1);
+void * vide(){
+printf ("Début temps libre sur proc%d\n",1);
   int j=0;   
  while  (j< 200900000){
    j++;
  }
-printf ("fin idle \n");
+printf ("fin temps libre \n");
 return NULL;
 }
 /********************************************************************************/
+
+/******************************************************************************/
+/* Code de la tâche idle*/ 
+void * idle(){
+//printf ("Début idle sur proc%d\n",1);  
+ while  (1){
+   
+ }
+
+return NULL;
+}
+/********************************************************************************/
+
 // table d'ordonnancement
 //ELEMENT_TAB T[]={{2,2,1,tache2},{1,2,1,tache1},{2,3,0,tache2},{3,1,1,tache3},{1,2,1,tache1},{3,2,0,tache3},{2,2,1,tache2}};
-ELEMENT_TAB T[SIZE_T]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,idle}};
+ELEMENT_TAB T[SIZE_T]={{2,2,1,tache2},{1,2,1,tache1},{2,2,0,tache2},{3,2,1,tache3},{1,2,1,tache1},{4,2,1,vide}};
 // timer logiciel et signal( interruption logicielle)
 timer_t timer_o; 
 struct sigevent event_o; 
@@ -175,6 +188,7 @@ ret = pthread_setschedparam(Nb_threads[(T[i].id-1)],SCHED_FIFO,&param);
 /****************/
 /*Fonction main*/
 int main (void){
+int compteur=0;
 int err;
 cpu_set_t cpuset;
 CPU_ZERO(&cpuset);
@@ -187,8 +201,6 @@ param.sched_priority=99;
 if((sched_setaffinity(0,sizeof(cpu_set_t),&cpuset)!=0))
    printf ("Erreur affinity main \n");
 
-//int n=sched_getcpu();
-//printf ("Début main sur proc%d\n",(n+1));
 
 if(sched_setscheduler(0,SCHED_FIFO,&param)!=0)
    printf ("Erreur setchedluer main \n");
@@ -246,6 +258,9 @@ if((pthread_create(&thread_idle,&attributs,&idle,NULL)!=0) ){
 
 /*Fin création thread de la tâche idle*/
 
+
+
+
 //Armer le timer timer_o pour la première fois
 
 if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
@@ -255,7 +270,7 @@ if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
 
 
 
-int compteur=0;
+
 
 while (compteur < 20){
 
