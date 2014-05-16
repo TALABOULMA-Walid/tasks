@@ -1,0 +1,364 @@
+[0.000000]  Début Task2 sur proc1
+[1.940000]  Début Task1 sur proc1
+[3.770000]  Fin Task1 
+[3.840000]  reprise Task2 
+[5.470000]  Fin Task2 
+[5.740000]  Début Task3 sur proc1
+[7.520000]  Fin Task3 
+[7.640000]  Début Task1 sur proc1
+[9.450000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[11.440000]  Début Task2 sur proc1
+[13.340000]  Début Task1 sur proc1
+[15.170000]  Fin Task1 
+[15.240000]  reprise Task2 
+[16.910000]  Fin Task2 
+[17.140000]  Début Task3 sur proc1
+[18.920000]  Fin Task3 
+[19.040000]  Début Task1 sur proc1
+[20.830000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[22.840000]  Début Task2 sur proc1
+[24.740000]  Début Task1 sur proc1
+[26.530000]  Fin Task1 
+[26.640000]  reprise Task2 
+[28.300000]  Fin Task2 
+[28.540000]  Début Task3 sur proc1
+[30.320000]  Fin Task3 
+[30.440000]  Début Task1 sur proc1
+[32.240000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[34.240000]  Début Task2 sur proc1
+[36.150000]  Début Task1 sur proc1
+[37.960000]  Fin Task1 
+[38.040000]  reprise Task2 
+[39.700000]  Fin Task2 
+[39.940000]  Début Task3 sur proc1
+[41.720000]  Fin Task3 
+[41.840000]  Début Task1 sur proc1
+[43.670000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[45.640000]  Début Task2 sur proc1
+[47.540000]  Début Task1 sur proc1
+[49.340000]  Fin Task1 
+[49.440000]  reprise Task2 
+[51.110000]  Fin Task2 
+[51.340000]  Début Task3 sur proc1
+[53.120000]  Fin Task3 
+[53.240000]  Début Task1 sur proc1
+[55.050000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[57.040000]  Début Task2 sur proc1
+[58.940000]  Début Task1 sur proc1
+[60.790000]  Fin Task1 
+[60.840000]  reprise Task2 
+[62.510000]  Fin Task2 
+[62.740000]  Début Task3 sur proc1
+[64.530000]  Fin Task3 
+[64.640000]  Début Task1 sur proc1
+[66.500000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[68.440000]  Début Task2 sur proc1
+[70.340000]  Début Task1 sur proc1
+[72.170000]  Fin Task1 
+[72.240000]  reprise Task2 
+[73.910000]  Fin Task2 
+[74.150000]  Début Task3 sur proc1
+[75.930000]  Fin Task3 
+[76.040000]  Début Task1 sur proc1
+[77.880000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[79.840000]  Début Task2 sur proc1
+[81.740000]  Début Task1 sur proc1
+[83.570000]  Fin Task1 
+[83.650000]  reprise Task2 
+[85.300000]  Fin Task2 
+[85.550000]  Début Task3 sur proc1
+[87.330000]  Fin Task3 
+[87.440000]  Début Task1 sur proc1
+[89.260000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[91.240000]  Début Task2 sur proc1
+[93.140000]  Début Task1 sur proc1
+[94.960000]  Fin Task1 
+[95.050000]  reprise Task2 
+[96.720000]  Fin Task2 
+[96.940000]  Début Task3 sur proc1
+[98.730000]  Fin Task3 
+[98.840000]  Début Task1 sur proc1
+[100.690000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[102.650000]  Début Task2 sur proc1
+[104.540000]  Début Task1 sur proc1
+[106.380000]  Fin Task1 
+[106.440000]  reprise Task2 
+[108.110000]  Fin Task2 
+[108.350000]  Début Task3 sur proc1
+[110.130000]  Fin Task3 
+[110.240000]  Début Task1 sur proc1
+[112.080000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[114.040000]  Début Task2 sur proc1
+[115.950000]  Début Task1 sur proc1
+[117.770000]  Fin Task1 
+[117.850000]  reprise Task2 
+[119.510000]  Fin Task2 
+[119.750000]  Début Task3 sur proc1
+[121.530000]  Fin Task3 
+[121.640000]  Début Task1 sur proc1
+[123.450000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[125.450000]  Début Task2 sur proc1
+[127.340000]  Début Task1 sur proc1
+[129.180000]  Fin Task1 
+[129.250000]  reprise Task2 
+[130.920000]  Fin Task2 
+[131.150000]  Début Task3 sur proc1
+[132.930000]  Fin Task3 
+[133.050000]  Début Task1 sur proc1
+[134.880000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[136.840000]  Début Task2 sur proc1
+[138.740000]  Début Task1 sur proc1
+[140.580000]  Fin Task1 
+[140.650000]  reprise Task2 
+[142.320000]  Fin Task2 
+[142.540000]  Début Task3 sur proc1
+[144.330000]  Fin Task3 
+[144.450000]  Début Task1 sur proc1
+[146.300000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[148.240000]  Début Task2 sur proc1
+[150.150000]  Début Task1 sur proc1
+[151.960000]  Fin Task1 
+[152.040000]  reprise Task2 
+[153.720000]  Fin Task2 
+[153.950000]  Début Task3 sur proc1
+[155.740000]  Fin Task3 
+[155.850000]  Début Task1 sur proc1
+[157.650000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[159.650000]  Début Task2 sur proc1
+[161.540000]  Début Task1 sur proc1
+[163.370000]  Fin Task1 
+[163.450000]  reprise Task2 
+[165.120000]  Fin Task2 
+[165.350000]  Début Task3 sur proc1
+[167.140000]  Fin Task3 
+[167.250000]  Début Task1 sur proc1
+[169.060000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[171.050000]  Début Task2 sur proc1
+[172.950000]  Début Task1 sur proc1
+[174.760000]  Fin Task1 
+[174.850000]  reprise Task2 
+[176.520000]  Fin Task2 
+[176.750000]  Début Task3 sur proc1
+[178.540000]  Fin Task3 
+[178.650000]  Début Task1 sur proc1
+[180.460000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[182.450000]  Début Task2 sur proc1
+[184.350000]  Début Task1 sur proc1
+[186.170000]  Fin Task1 
+[186.250000]  reprise Task2 
+[187.910000]  Fin Task2 
+[188.150000]  Début Task3 sur proc1
+[189.930000]  Fin Task3 
+[190.050000]  Début Task1 sur proc1
+[191.900000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[193.850000]  Début Task2 sur proc1
+[195.750000]  Début Task1 sur proc1
+[197.580000]  Fin Task1 
+[197.650000]  reprise Task2 
+[199.320000]  Fin Task2 
+[199.550000]  Début Task3 sur proc1
+[201.330000]  Fin Task3 
+[201.450000]  Début Task1 sur proc1
+[203.320000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[205.250000]  Début Task2 sur proc1
+[207.150000]  Début Task1 sur proc1
+[208.960000]  Fin Task1 
+[209.050000]  reprise Task2 
+[210.730000]  Fin Task2 
+[210.950000]  Début Task3 sur proc1
+[212.740000]  Fin Task3 
+[212.860000]  Début Task1 sur proc1
+[214.670000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[216.650000]  Début Task2 sur proc1
+[218.550000]  Début Task1 sur proc1
+[220.370000]  Fin Task1 
+[220.450000]  reprise Task2 
+[222.120000]  Fin Task2 
+[222.350000]  Début Task3 sur proc1
+[224.140000]  Fin Task3 
+[224.250000]  Début Task1 sur proc1
+[226.050000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[228.060000]  Début Task2 sur proc1
+[229.950000]  Début Task1 sur proc1
+[231.790000]  Fin Task1 
+[231.860000]  reprise Task2 
+[233.520000]  Fin Task2 
+[233.750000]  Début Task3 sur proc1
+[235.540000]  Fin Task3 
+[235.650000]  Début Task1 sur proc1
+[237.460000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[239.450000]  Début Task2 sur proc1
+[241.350000]  Début Task1 sur proc1
+[243.160000]  Fin Task1 
+[243.260000]  reprise Task2 
+[244.930000]  Fin Task2 
+[245.150000]  Début Task3 sur proc1
+[246.940000]  Fin Task3 
+[247.050000]  Début Task1 sur proc1
+[248.870000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[250.850000]  Début Task2 sur proc1
+[252.750000]  Début Task1 sur proc1
+[254.590000]  Fin Task1 
+[254.650000]  reprise Task2 
+[256.330000]  Fin Task2 
+[256.550000]  Début Task3 sur proc1
+[258.330000]  Fin Task3 
+[258.460000]  Début Task1 sur proc1
+[260.260000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[262.250000]  Début Task2 sur proc1
+[264.160000]  Début Task1 sur proc1
+[266.010000]  Fin Task1 
+[266.060000]  reprise Task2 
+[267.780000]  Fin Task2 
+[267.960000]  Début Task3 sur proc1
+[269.740000]  Fin Task3 
+[269.850000]  Début Task1 sur proc1
+[271.710000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[273.660000]  Début Task2 sur proc1
+[275.560000]  Début Task1 sur proc1
+[277.380000]  Fin Task1 
+[277.450000]  reprise Task2 
+[279.130000]  Fin Task2 
+[279.360000]  Début Task3 sur proc1
+[281.140000]  Fin Task3 
+[281.260000]  Début Task1 sur proc1
+[283.060000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[285.050000]  Début Task2 sur proc1
+[286.950000]  Début Task1 sur proc1
+[288.760000]  Fin Task1 
+[288.860000]  reprise Task2 
+[290.520000]  Fin Task2 
+[290.750000]  Début Task3 sur proc1
+[292.540000]  Fin Task3 
+[292.660000]  Début Task1 sur proc1
+[294.450000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[296.460000]  Début Task2 sur proc1
+[298.360000]  Début Task1 sur proc1
+[300.160000]  Fin Task1 
+[300.260000]  reprise Task2 
+[301.920000]  Fin Task2 
+[302.160000]  Début Task3 sur proc1
+[303.930000]  Fin Task3 
+[304.060000]  Début Task1 sur proc1
+[305.870000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[307.860000]  Début Task2 sur proc1
+[309.760000]  Début Task1 sur proc1
+[311.590000]  Fin Task1 
+[311.660000]  reprise Task2 
+[313.310000]  Fin Task2 
+[313.560000]  Début Task3 sur proc1
+[315.340000]  Fin Task3 
+[315.460000]  Début Task1 sur proc1
+[317.270000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[319.260000]  Début Task2 sur proc1
+[321.160000]  Début Task1 sur proc1
+[322.990000]  Fin Task1 
+[323.060000]  reprise Task2 
+[324.720000]  Fin Task2 
+[324.960000]  Début Task3 sur proc1
+[326.740000]  Fin Task3 
+[326.860000]  Début Task1 sur proc1
+[328.660000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[330.660000]  Début Task2 sur proc1
+[332.560000]  Début Task1 sur proc1
+[334.380000]  Fin Task1 
+[334.460000]  reprise Task2 
+[336.110000]  Fin Task2 
+[336.360000]  Début Task3 sur proc1
+[338.130000]  Fin Task3 
+[338.260000]  Début Task1 sur proc1
+[340.090000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[342.060000]  Début Task2 sur proc1
+[343.960000]  Début Task1 sur proc1
+[345.760000]  Fin Task1 
+[345.860000]  reprise Task2 
+[347.520000]  Fin Task2 
+[347.760000]  Début Task3 sur proc1
+[349.540000]  Fin Task3 
+[349.660000]  Début Task1 sur proc1
+[351.470000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[353.460000]  Début Task2 sur proc1
+[355.360000]  Début Task1 sur proc1
+[357.170000]  Fin Task1 
+[357.260000]  reprise Task2 
+[358.920000]  Fin Task2 
+[359.160000]  Début Task3 sur proc1
+[360.940000]  Fin Task3 
+[361.060000]  Début Task1 sur proc1
+[362.870000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[364.870000]  Début Task2 sur proc1
+[366.760000]  Début Task1 sur proc1
+[368.550000]  Fin Task1 
+[368.660000]  reprise Task2 
+[370.310000]  Fin Task2 
+[370.560000]  Début Task3 sur proc1
+[372.340000]  Fin Task3 
+[372.470000]  Début Task1 sur proc1
+[374.280000]  Fin Task1 
+Début temps libre sur proc1
+fin temps libre 
+[376.270000]  Début Task2 sur proc1

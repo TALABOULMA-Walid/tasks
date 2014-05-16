@@ -35,7 +35,7 @@ void * tache1(){
 //int n=sched_getcpu();
 printf ("[%f]  Début Task1 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
 int j=0;  
- while  (j<200900000){
+ while  (j<1000900000){
    j++;
  }
 printf ("[%f]  Fin Task1 \n",(clock()/(double)CLOCKS_PER_SEC));
@@ -47,7 +47,7 @@ void * tache2(){
 //int n=sched_getcpu();
 printf ("[%f]  Début Task2 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
  int j=0;  
- while  (j< 400900000){
+ while  (j< 2000900000){
    j++;
  }
 printf ("[%f]  Fin Task2 \n",(clock()/(double)CLOCKS_PER_SEC));
@@ -59,7 +59,7 @@ void * tache3(){
 //int n=sched_getcpu();
 printf ("[%f]  Début Task3 sur proc%d\n",(clock()/(double)CLOCKS_PER_SEC),1);
  int j=0;   
- while  (j< 200900000){
+ while  (j< 1000900000){
    j++;
  }
 
@@ -71,7 +71,7 @@ return NULL;
 void * vide(){
 printf ("Début temps libre sur proc%d\n",1);
   int j=0;   
- while  (j< 200900000){
+ while  (j< 1000900000){
    j++;
  }
 printf ("fin temps libre \n");
@@ -272,7 +272,7 @@ if(timer_settime(timer_o,0,&spec_o,NULL)!=0){
 
 
 
-while (compteur < 20){
+while (compteur < 200){
 
 compteur++;
 
